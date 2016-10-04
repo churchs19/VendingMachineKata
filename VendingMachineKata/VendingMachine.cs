@@ -8,5 +8,16 @@ namespace VendingMachineKata
 {
     public class VendingMachine
     {
+        public VendingMachine()
+        {
+            Display = "INSERT COIN";
+        }
+
+        public string Display { get; private set; }
+
+        public bool InsertCoin(string coin)
+        {
+            return false;
+        }
     }
 }
