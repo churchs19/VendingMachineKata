@@ -8,6 +8,13 @@ namespace VendingMachineKata
 {
     public class VendingMachine
     {
+        public enum Products
+        {
+            Cola,
+            Chips,
+            Candy
+        }
+
         public VendingMachine()
         {
         }
@@ -37,6 +44,11 @@ namespace VendingMachineKata
                 default:
                     return false;
             }
+        }
+
+        public void SelectProduct(Products product)
+        {
+
         }
     }
 }
