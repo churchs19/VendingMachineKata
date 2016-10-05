@@ -39,20 +39,56 @@ namespace VendingMachineTests
             machine.InsertCoin("q");
             machine.InsertCoin("q");
             machine.InsertCoin("q");
+            machine.SelectProduct(VendingMachine.Products.Cola);
             Assert.AreEqual("THANK YOU", machine.Display);
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
         [TestMethod]
+        public void PurchaseChipsNoFunds()
+        {
+            machine.SelectProduct(VendingMachine.Products.Chips);
+            Assert.AreEqual("PRICE $0.50", machine.Display);
+            Assert.AreEqual("INSERT COIN", machine.Display);
+        }
+
+        [TestMethod]
+        public void PurchaseChipsInsufficientFunds()
+        {
+            machine.InsertCoin("q");
+            machine.SelectProduct(VendingMachine.Products.Chips);
+            Assert.AreEqual("PRICE $0.50", machine.Display);
+            Assert.AreEqual("$0.25", machine.Display);
+        }
+
+        [TestMethod]
         public void PurchaseChips()
         {
-            Assert.Fail();
+            machine.InsertCoin("q");
+            machine.InsertCoin("q");
+            machine.SelectProduct(VendingMachine.Products.Chips);
+            Assert.AreEqual("THANK YOU", machine.Display);
+            Assert.AreEqual("INSERT COIN", machine.Display);
+        }
+
+        [TestMethod]
+        public void PurchaseCandyNoFunds()
+        {
+            machine.SelectProduct(VendingMachine.Products.Candy);
+            Assert.AreEqual("PRICE $0.65", machine.Display);
+            Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
         [TestMethod]
         public void PurchaseCandy()
         {
-            Assert.Fail();
+            machine.InsertCoin("q");
+            machine.InsertCoin("q");
+            machine.InsertCoin("d");
+            machine.InsertCoin("n");
+            machine.SelectProduct(VendingMachine.Products.Candy);
+            Assert.AreEqual("THANK YOU", machine.Display);
+            Assert.AreEqual("INSERT COIN", machine.Display);
         }
     }
 }
