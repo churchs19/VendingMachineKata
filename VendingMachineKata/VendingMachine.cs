@@ -78,9 +78,36 @@ namespace VendingMachineKata
             }
             if(coinValue >= selectedPrice)
             {
+                var changeAmount = Math.Round(coinValue - selectedPrice, 2);
                 coinValue = 0;
                 selectedPrice = 0;
                 purchased = true;
+                MakeChange(changeAmount);
+            }
+        }
+
+        private void MakeChange(double amount)
+        {
+            if(amount >= 0.25)
+            {
+                CoinReturn.Add("q");
+                amount -= 0.25;
+            }
+            else if (amount >= 0.10)
+            {
+                CoinReturn.Add("d");
+                amount -= 0.10;
+            }
+            else if(amount >= 0.05)
+            {
+                CoinReturn.Add("n");
+                amount -= 0.05;
+            }
+
+            amount = Math.Round(amount, 2);
+            if(amount > 0)
+            {
+                MakeChange(amount);
             }
         }
     }

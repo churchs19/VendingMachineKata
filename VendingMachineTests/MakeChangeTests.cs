@@ -49,5 +49,20 @@ namespace VendingMachineTests
             Assert.AreEqual("q", machine.CoinReturn[0]);
             Assert.AreEqual("d", machine.CoinReturn[1]);
         }
+
+        [TestCategory("Make Change"), TestMethod]
+        public void QuarterDimeNickelChange()
+        {
+            machine.InsertCoin("q");
+            machine.InsertCoin("q");
+            machine.InsertCoin("q");
+            machine.InsertCoin("q");
+            machine.InsertCoin("n");
+            machine.SelectProduct(VendingMachine.Products.Candy);
+            Assert.AreEqual(3, machine.CoinReturn.Count);
+            Assert.AreEqual("q", machine.CoinReturn[0]);
+            Assert.AreEqual("d", machine.CoinReturn[1]);
+            Assert.AreEqual("n", machine.CoinReturn[2]);
+        }
     }
 }
