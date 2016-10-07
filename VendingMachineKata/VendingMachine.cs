@@ -86,6 +86,11 @@ namespace VendingMachineKata
             }
         }
 
+        public void ReturnCoins()
+        {
+
+        }
+
         private void MakeChange(double amount)
         {
             if(amount >= 0.25)

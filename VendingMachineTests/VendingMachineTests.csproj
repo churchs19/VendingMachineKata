@@ -55,6 +55,7 @@
     <Compile Include="AcceptCoinTests.cs" />
     <Compile Include="MakeChangeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReturnCoinsTests.cs" />
     <Compile Include="SelectProductTests.cs" />
   </ItemGroup>
   <ItemGroup>
