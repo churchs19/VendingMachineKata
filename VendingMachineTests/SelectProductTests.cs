@@ -15,7 +15,7 @@ namespace VendingMachineTests
             machine = new VendingMachine();
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseColaNoFunds()
         {
             machine.SelectProduct(VendingMachine.Products.Cola);
@@ -23,7 +23,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseColaInsufficientFunds()
         {
             machine.InsertCoin("d");
@@ -32,7 +32,7 @@ namespace VendingMachineTests
             Assert.AreEqual("$0.10", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseCola()
         {
             machine.InsertCoin("q");
@@ -44,7 +44,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseChipsNoFunds()
         {
             machine.SelectProduct(VendingMachine.Products.Chips);
@@ -52,7 +52,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseChipsInsufficientFunds()
         {
             machine.InsertCoin("q");
@@ -61,7 +61,7 @@ namespace VendingMachineTests
             Assert.AreEqual("$0.25", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseChips()
         {
             machine.InsertCoin("q");
@@ -71,7 +71,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseCandyNoFunds()
         {
             machine.SelectProduct(VendingMachine.Products.Candy);
@@ -79,7 +79,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Select Product"), TestMethod]
         public void PurchaseCandy()
         {
             machine.InsertCoin("q");

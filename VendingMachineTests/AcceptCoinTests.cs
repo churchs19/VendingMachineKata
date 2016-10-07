@@ -15,13 +15,13 @@ namespace VendingMachineTests
             machine = new VendingMachine();
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InitialDisplayReadsINSERTCOIN()
         {
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InsertQuarter()
         {
             bool accepted = machine.InsertCoin("q");
@@ -29,7 +29,7 @@ namespace VendingMachineTests
             Assert.AreEqual(machine.Display, "$0.25");
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InsertDime()
         {
             bool accepted = machine.InsertCoin("d");
@@ -37,7 +37,7 @@ namespace VendingMachineTests
             Assert.AreEqual(machine.Display, "$0.10");
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InsertNickel()
         {
             bool accepted = machine.InsertCoin("n");
@@ -45,7 +45,7 @@ namespace VendingMachineTests
             Assert.AreEqual(machine.Display, "$0.05");
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InsertPenny()
         {
             bool accepted = machine.InsertCoin("p");
@@ -53,7 +53,7 @@ namespace VendingMachineTests
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
-        [TestMethod]
+        [TestCategory("Accept Coin"), TestMethod]
         public void InsertQuarterDimeNickelAndPenny()
         {
             bool accepted = machine.InsertCoin("q");

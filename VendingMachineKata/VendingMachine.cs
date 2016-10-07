@@ -17,6 +17,7 @@ namespace VendingMachineKata
 
         public VendingMachine()
         {
+            CoinReturn = new List<string>();
         }
 
         private double coinValue = 0;
@@ -40,6 +41,8 @@ namespace VendingMachineKata
                 return coinValue == 0 ? "INSERT COIN" : coinValue.ToString("C2");
             }
         }
+
+        public List<string> CoinReturn { get; private set; }
 
         public bool InsertCoin(string coin)
         {
