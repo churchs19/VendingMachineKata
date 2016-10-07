@@ -18,8 +18,10 @@ namespace VendingMachineKata
         public VendingMachine()
         {
             CoinReturn = new List<string>();
+            insertedCoins = new List<string>();
         }
 
+        private List<string> insertedCoins;
         private double coinValue = 0;
         double selectedPrice = 0;
         bool purchased = false;
@@ -27,12 +29,12 @@ namespace VendingMachineKata
         {
             get
             {
-                if(purchased)
+                if (purchased)
                 {
                     purchased = false;
                     return "THANK YOU";
                 }
-                if(selectedPrice > 0)
+                if (selectedPrice > 0)
                 {
                     var display = String.Format("PRICE {0:C2}", selectedPrice);
                     selectedPrice = 0;
@@ -46,16 +48,19 @@ namespace VendingMachineKata
 
         public bool InsertCoin(string coin)
         {
-            switch(coin)
+            switch (coin)
             {
                 case "q":
                     coinValue += 0.25;
+                    insertedCoins.Add("q");
                     return true;
                 case "d":
                     coinValue += 0.10;
+                    insertedCoins.Add("d");
                     return true;
                 case "n":
                     coinValue += 0.05;
+                    insertedCoins.Add("n");
                     return true;
                 default:
                     return false;
@@ -64,7 +69,7 @@ namespace VendingMachineKata
 
         public void SelectProduct(Products product)
         {
-            switch(product)
+            switch (product)
             {
                 case Products.Cola:
                     selectedPrice = 1;
@@ -76,7 +81,7 @@ namespace VendingMachineKata
                     selectedPrice = 0.65;
                     break;
             }
-            if(coinValue >= selectedPrice)
+            if (coinValue >= selectedPrice)
             {
                 var changeAmount = Math.Round(coinValue - selectedPrice, 2);
                 coinValue = 0;
@@ -88,12 +93,14 @@ namespace VendingMachineKata
 
         public void ReturnCoins()
         {
-
+            CoinReturn.AddRange(insertedCoins);
+            insertedCoins.Clear();
+            coinValue = 0;
         }
 
         private void MakeChange(double amount)
         {
-            if(amount >= 0.25)
+            if (amount >= 0.25)
             {
                 CoinReturn.Add("q");
                 amount -= 0.25;
@@ -103,14 +110,14 @@ namespace VendingMachineKata
                 CoinReturn.Add("d");
                 amount -= 0.10;
             }
-            else if(amount >= 0.05)
+            else if (amount >= 0.05)
             {
                 CoinReturn.Add("n");
                 amount -= 0.05;
             }
 
             amount = Math.Round(amount, 2);
-            if(amount > 0)
+            if (amount > 0)
             {
                 MakeChange(amount);
             }
