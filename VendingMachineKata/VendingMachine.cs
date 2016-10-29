@@ -63,6 +63,7 @@ namespace VendingMachineKata
                     insertedCoins.Add("n");
                     return true;
                 default:
+                    CoinReturn.Add(coin);
                     return false;
             }
         }

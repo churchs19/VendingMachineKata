@@ -50,6 +50,8 @@ namespace VendingMachineTests
         {
             bool accepted = machine.InsertCoin("p");
             Assert.IsFalse(accepted);
+            Assert.AreEqual(1, machine.CoinReturn.Count);
+            Assert.AreEqual("p", machine.CoinReturn[0]);
             Assert.AreEqual("INSERT COIN", machine.Display);
         }
 
